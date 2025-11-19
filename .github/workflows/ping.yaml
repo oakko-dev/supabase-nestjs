@@ -1,0 +1,12 @@
+name: Supabase NestJs Ping
+
+on:
+  schedule:
+    - cron: "0 17 * * *"
+
+jobs:
+  test_cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show that the cron job is running
+        run: curl -s "https://supabase-nestjs.vercel.app/healthcheck/ping"

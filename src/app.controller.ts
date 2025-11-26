@@ -1,10 +1,9 @@
 import { Controller, Get } from "@nestjs/common"
-import { PrismaService } from "prisma/prisma.service"
 import { AppService } from "./app.service"
 
 @Controller()
 export class AppController {
-	constructor(private readonly appService: AppService, private readonly prisma: PrismaService) {}
+	constructor(private readonly appService: AppService) {}
 
 	@Get()
 	getHello(): string {
@@ -12,12 +11,12 @@ export class AppController {
 	}
 
 	@Get("healthcheck")
-	async getHealthCheck(): Promise<number> {
-		return await this.appService.getCountHealthCheck()
+	async getHealthCheck(): Promise<any> {
+		return await this.appService.getHealthCheck()
 	}
 
 	@Get("healthcheck/ping")
-	async incrementCountHealthCheck(): Promise<number> {
-		return await this.appService.incrementCountHealthCheck()
+	async incrementCountHealthCheck(): Promise<any> {
+		return await this.appService.incrementHealthCheck()
 	}
 }
